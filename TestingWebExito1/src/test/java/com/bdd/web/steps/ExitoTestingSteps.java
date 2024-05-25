@@ -44,7 +44,7 @@ public class ExitoTestingSteps {
 
     //Valido los nombres del de los productos
     public String validoProducto(String productoOne) {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         return exitoTestingPage().validoProducto1(productoOne);
     }
 
@@ -109,12 +109,19 @@ public class ExitoTestingSteps {
     }
 
     public void hagoCliclEnElCarritoParaVerTodoMisProducto() {
+
         exitoTestingPage().getCarritoDeCompras().click();
     }
 
-    public String miTotalAPagarPorTodosMisProductos() {
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        System.out.println(exitoTestingPage().getPrecioTotal());
-        return exitoTestingPage().getPrecioTotal();
+    public String validoQueEstenLasUnidadesDelProducto(String number) {
+        System.out.println(exitoTestingPage().getCantidadProducto(number));
+        return exitoTestingPage().getCantidadProducto(number);
     }
+
+    public String miTotalAPagarPorTodosMisProductos(String precio) {
+        System.out.println(exitoTestingPage().getPrecioTotal(precio));
+        return exitoTestingPage().getPrecioTotal(precio);
+    }
+
+
 }

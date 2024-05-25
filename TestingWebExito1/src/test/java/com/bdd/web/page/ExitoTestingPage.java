@@ -3,6 +3,11 @@ package com.bdd.web.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.text.MessageFormat;
+import java.time.Duration;
 
 public class ExitoTestingPage {
     WebDriver driver;
@@ -34,7 +39,10 @@ public class ExitoTestingPage {
     By sumatoriaProducto5 = By.xpath("//*[@id=\"__next\"]/main/section[4]/div/div[2]/div[2]/div[2]/ul/li[5]/article/section/div[2]/div[2]/div/button[2]");
     //----
     By carritoCompra = By.xpath("//*[@id=\"__next\"]/header/section/div/div[2]/div[2]/button/span");
-    By precioTotal = By.xpath("//span[contains(text(), '7.471.150')]");
+
+    String numberProducto = "//span[@data-molecule-quantity-und-value='true' and contains(text(), 'respuesta')]";
+
+    String precioTotal = "//*[contains(@data-molecule-summary-item-value, 'true') and contains(text(), '";
 
 
     //METODO WEB ELEMENT
@@ -104,7 +112,19 @@ public class ExitoTestingPage {
         return driver.findElement(carritoCompra);
     }
 
-    public String getPrecioTotal() {
-        return driver.findElement(precioTotal).getText();
+    public String getCantidadProducto(String number) {
+        // Espera explícita para esperar a que el elemento esté presente en el DOM
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        String respuestaNueva = numberProducto.replace("respuesta", number);
+        WebElement validar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(respuestaNueva)));
+        return validar.getText();
+    }
+
+    public String getPrecioTotal(String precio) {
+        // Espera explícita para esperar a que el elemento esté presente en el DOM
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        String respuestaNueva = precioTotal + "$ " + precio + "')]";
+        WebElement validar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(respuestaNueva)));
+        return validar.getText();
     }
 }

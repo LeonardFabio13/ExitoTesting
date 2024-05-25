@@ -84,8 +84,13 @@ public class ExitoTestingStepdefs {
         exitoTestingSteps.hagoCliclEnElCarritoParaVerTodoMisProducto();
     }
 
+    @Y("valido que esten las {string} unidades del producto {string}")
+    public void validoQueEstenLasUnidadesDelProducto(String number, String arg1) {
+        Assert.assertEquals(exitoTestingSteps.validoQueEstenLasUnidadesDelProducto(number),number);
+    }
+
     @Y("al pagar por todos mis productos me sale un {string}")
     public void miTotalAPagarPorTodosMisProductos(String precio) {
-        Assert.assertEquals(exitoTestingSteps.miTotalAPagarPorTodosMisProductos(),precio);
+        Assert.assertEquals(exitoTestingSteps.miTotalAPagarPorTodosMisProductos(precio),precio);
     }
 }
