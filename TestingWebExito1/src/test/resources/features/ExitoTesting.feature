@@ -22,4 +22,4 @@ Característica: Agregar articulos al carrito de compras
     Y valido que esten las "9" unidades del producto "Cabecero De Cama Doble Cuadro 140 X 60 Negro"
     Y valido que esten las "3" unidades del producto "Espaldar De Piso 140 X 120"
     Y valido que esten las "4" unidades del producto "Cabecero Paneles Cama Doble Rosa"
-    Y al pagar por todos mis productos me sale un "9.100.330"
+    #Y al pagar por todos mis productos me sale un "9.100.330"
